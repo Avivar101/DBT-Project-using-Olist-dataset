@@ -1,17 +1,17 @@
 with source as (
-        select * from {{ source('olist', 'products') }}
+        select * from {{ source('olist_raw_dataset', 'products') }}
   ),
   renamed as (
       select
-          cast(product_id as varchar) as product_id,
-          cast(product_category_name as varchar) as product_category_name,
+          cast(product_id as string) as product_id,
+          cast(product_category_name as string) as product_category_name,
           cast(product_name_lenght as integer) as product_name_length,
           cast(product_description_lenght as integer) as product_description_length,
           cast(product_photos_qty as integer) as product_photos_qty,
-          cast(product_weight_g as float) as product_weight_g,
-          cast(product_length_cm as float) as product_length_cm,
-          cast(product_height_cm as float) as product_height_cm,
-          cast(product_width_cm as float) as product_width_cm
+          cast(product_weight_g as float64) as product_weight_g,
+          cast(product_length_cm as float64) as product_length_cm,
+          cast(product_height_cm as float64) as product_height_cm,
+          cast(product_width_cm as float64) as product_width_cm
 
       from source
   )
