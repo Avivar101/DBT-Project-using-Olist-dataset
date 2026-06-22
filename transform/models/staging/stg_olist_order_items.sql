@@ -1,5 +1,5 @@
 with source as (
-        select * from {{ source('olist', 'order_items') }}
+        select * from {{ source('olist_raw_dataset', 'order_items') }}
   ),
   renamed as (
       select
