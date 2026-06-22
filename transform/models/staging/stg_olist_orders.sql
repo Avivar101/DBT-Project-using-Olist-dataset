@@ -1,11 +1,11 @@
 with source as (
-        select * from {{ source('olist', 'orders') }}
+        select * from {{ source('olist_raw_dataset', 'orders') }}
   ),
   renamed as (
       select
-          cast(order_id as varchar) as order_id,
-          cast(customer_id as varchar) as customer_id,
-          cast(order_status as varchar) as order_status,
+          cast(order_id as string) as order_id,
+          cast(customer_id as string) as customer_id,
+          cast(order_status as string) as order_status,
           cast(order_purchase_timestamp as timestamp) as order_purchase_timestamp,
           cast(order_approved_at as timestamp) as order_approved_at,
           cast(order_delivered_carrier_date as timestamp) as order_delivered_carrier_date,
